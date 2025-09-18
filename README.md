@@ -118,22 +118,23 @@ GET http://localhost:3000/images?filename=fjord.jpg&width=300&height=200
 ```
 <img width="300" height="200" alt="image" src="https://github.com/user-attachments/assets/658dd34b-af98-4a37-b8f0-c30079564558" />
 
-```
+
 
 2. **Resize santamonica.jpg to 500x500:**
 ```
 GET http://localhost:3000/images?filename=santamonica.jpg&width=500&height=500
-```
-<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/c04a0b58-3eb6-4b95-9f36-7b765bd5591d" />
-
 
 ```
+ <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/ec42b826-4cd7-4931-8e95-af5fdbafb166" />
+
 
 
 3. **Using curl:**
 ```bash
 curl "http://localhost:3000/images?filename=icelandwaterfall.jpg&width=400&height=300"
 ```
+<img width="400" height="300" alt="image" src="https://github.com/user-attachments/assets/2f04a0a5-ef88-4559-8dc1-f60a32582189" />
+
 
 ### Response
 
