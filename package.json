@@ -5,10 +5,10 @@
   "scripts": {
     "build": "tsc",
     "start": "nodemon src/index.ts",
-    "lint": "eslint src/**/*.{ts,js}",
-    "lint:fix": "eslint 'src/**/*.{js,ts}' --fix",
-    "test": "jasmine",
-    "format": "prettier --write 'src/**/*.{js,ts,json,md}'"
+    "lint": "eslint src/**/**/*.ts",
+    "lint:fix": "eslint src/**/**/*.ts --fix",
+    "test": "npm run build && jasmine",
+    "format": "prettier --write 'src/**/*.ts'"
   },
   "repository": {
     "type": "git",

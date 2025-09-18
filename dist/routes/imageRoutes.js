@@ -39,30 +39,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var express_1 = require("express");
+var express_1 = __importDefault(require("express"));
 var imageProcessor_1 = __importDefault(require("../utilities/imageProcessor"));
-var imageRoutes = (0, express_1.Router)();
+var path_1 = __importDefault(require("path"));
+var imageRoutes = (0, express_1.default)();
 imageRoutes.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var filename, width, height, err_1;
+    var filename, width, height, resizedImage, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                try {
-                    filename = req.query.filename;
-                    width = parseInt(req.query.width, 10);
-                    height = parseInt(req.query.height, 10);
-                }
-                catch (err) {
-                    res.status(400).send('Invalid query parameters');
-                    return [2 /*return*/];
+                filename = req.query.filename;
+                width = parseInt(req.query.width, 10);
+                height = parseInt(req.query.height, 10);
+                if (!filename || isNaN(width) || isNaN(height)) {
+                    return [2 /*return*/, res
+                            .status(400)
+                            .send('Invalid query parameters. Please provide filename, width, and height.')];
                 }
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
                 return [4 /*yield*/, (0, imageProcessor_1.default)(filename, width, height)];
             case 2:
-                _a.sent();
-                res.status(200).send('Image resized successfully');
+                resizedImage = _a.sent();
+                res.status(200).sendFile(path_1.default.resolve(resizedImage));
                 return [3 /*break*/, 4];
             case 3:
                 err_1 = _a.sent();

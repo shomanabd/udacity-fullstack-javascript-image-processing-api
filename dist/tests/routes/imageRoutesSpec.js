@@ -42,16 +42,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var supertest_1 = __importDefault(require("supertest"));
 var index_1 = __importDefault(require("../../index"));
 var request = (0, supertest_1.default)(index_1.default);
-describe('GET /api/images', function () {
+describe('GET /images', function () {
     it('should return 400 if query parameters are missing', function () { return __awaiter(void 0, void 0, void 0, function () {
         var res;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/api/images')];
+                case 0: return [4 /*yield*/, request.get('/images')];
                 case 1:
                     res = _a.sent();
                     expect(res.status).toBe(400);
-                    expect(res.text).toBe('Invalid query parameters');
+                    expect(res.text).toBe('Invalid query parameters. Please provide filename, width, and height.');
                     return [2 /*return*/];
             }
         });
@@ -61,12 +61,11 @@ describe('GET /api/images', function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, request
-                        .get('/api/images')
-                        .query({ filename: 'test.jpg', width: '200', height: '200' })];
+                        .get('/images')
+                        .query({ filename: 'fjord.jpg', width: '200', height: '200' })];
                 case 1:
                     res = _a.sent();
                     expect(res.status).toBe(200);
-                    expect(res.text).toBe('Image resized successfully');
                     return [2 /*return*/];
             }
         });
