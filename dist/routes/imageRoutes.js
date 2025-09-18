@@ -49,8 +49,8 @@ imageRoutes.get('/', function (req, res) { return __awaiter(void 0, void 0, void
         switch (_a.label) {
             case 0:
                 filename = req.query.filename;
-                width = parseInt(req.query.width, 10);
-                height = parseInt(req.query.height, 10);
+                width = Number(req.query.width);
+                height = Number(req.query.height);
                 if (!filename || isNaN(width) || isNaN(height)) {
                     return [2 /*return*/, res
                             .status(400)

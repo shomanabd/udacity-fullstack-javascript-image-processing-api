@@ -19,4 +19,12 @@ describe('GET /images', () => {
 
     expect(res.status).toBe(200);
   });
+
+  it('should throw an error when input width is invalid', async () => {
+    const res = await request
+      .get('/images')
+      .query({ filename: 'fjord.jpg', width: '200fs', height: '200' });
+
+    expect(res.status).toBe(400);
+  });
 });

@@ -70,4 +70,18 @@ describe('GET /images', function () {
             }
         });
     }); });
+    it('should throw an error when input width is invalid', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var res;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request
+                        .get('/images')
+                        .query({ filename: 'fjord.jpg', width: '200fs', height: '200' })];
+                case 1:
+                    res = _a.sent();
+                    expect(res.status).toBe(400);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
 });

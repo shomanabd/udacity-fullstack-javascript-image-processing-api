@@ -70,4 +70,57 @@ describe('resizeImage function', function () {
             fs_1.default.unlinkSync(outputPath);
         }
     });
+    it('should throw an error when input file does not exist', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var nonExistentFile;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    nonExistentFile = 'nonexistent.jpg';
+                    return [4 /*yield*/, expectAsync((0, imageProcessor_1.default)(nonExistentFile, width, height)).toBeRejectedWithError(/Error processing image/)];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('should throw an error when width is invalid (0)', function () { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, expectAsync((0, imageProcessor_1.default)(testFile, 0, height)).toBeRejectedWithError(/Width and height must be positive integers./)];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('should throw an error when height is invalid (0)', function () { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, expectAsync((0, imageProcessor_1.default)(testFile, width, 0)).toBeRejectedWithError(/Width and height must be positive integers./)];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('should throw an error when width is negative', function () { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, expectAsync((0, imageProcessor_1.default)(testFile, -100, height)).toBeRejectedWithError(/Width and height must be positive integers./)];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('should throw an error when height is negative', function () { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, expectAsync((0, imageProcessor_1.default)(testFile, width, -100)).toBeRejectedWithError(/Error processing image/)];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    }); });
 });

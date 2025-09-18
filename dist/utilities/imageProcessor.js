@@ -48,6 +48,15 @@ var resizeImage = function (inputPath, width, height) { return __awaiter(void 0,
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
+                if (width <= 0 || height <= 0) {
+                    throw new Error('Width and height must be positive integers.');
+                }
+                if (!width || !height) {
+                    throw new Error('Width and height are required parameters.');
+                }
+                if (!inputPath || typeof inputPath !== 'string') {
+                    throw new Error('Invalid input path provided.');
+                }
                 filename = path_1.default.basename(inputPath);
                 inputPath = path_1.default.resolve('images', inputPath);
                 outputPath = path_1.default.resolve(outputdir, "".concat(width, "x").concat(height, "-").concat(filename));

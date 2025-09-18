@@ -5,8 +5,8 @@ import path from 'path';
 const imageRoutes = Router();
 imageRoutes.get('/', async (req, res) => {
   const filename: string = req.query.filename as string;
-  const width: number = parseInt(req.query.width as string, 10);
-  const height: number = parseInt(req.query.height as string, 10);
+  const width: number = Number(req.query.width);
+  const height: number = Number(req.query.height);
 
   if (!filename || isNaN(width) || isNaN(height)) {
     return res

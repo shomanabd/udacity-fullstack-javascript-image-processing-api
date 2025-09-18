@@ -9,6 +9,18 @@ const resizeImage = async (
   height: number
 ): Promise<string> => {
   try {
+    if (width <= 0 || height <= 0) {
+      throw new Error('Width and height must be positive integers.');
+    }
+
+    if (!width || !height) {
+      throw new Error('Width and height are required parameters.');
+    }
+
+    if (!inputPath || typeof inputPath !== 'string') {
+      throw new Error('Invalid input path provided.');
+    }
+
     const filename = path.basename(inputPath);
     inputPath = path.resolve('images', inputPath);
     const outputPath = path.resolve(

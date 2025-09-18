@@ -27,4 +27,36 @@ describe('resizeImage function', () => {
       fs.unlinkSync(outputPath);
     }
   });
+
+  it('should throw an error when input file does not exist', async () => {
+    const nonExistentFile = 'nonexistent.jpg';
+
+    await expectAsync(
+      resizeImage(nonExistentFile, width, height)
+    ).toBeRejectedWithError(/Error processing image/);
+  });
+
+  it('should throw an error when width is invalid (0)', async () => {
+    await expectAsync(resizeImage(testFile, 0, height)).toBeRejectedWithError(
+      /Width and height must be positive integers./
+    );
+  });
+
+  it('should throw an error when height is invalid (0)', async () => {
+    await expectAsync(resizeImage(testFile, width, 0)).toBeRejectedWithError(
+      /Width and height must be positive integers./
+    );
+  });
+
+  it('should throw an error when width is negative', async () => {
+    await expectAsync(
+      resizeImage(testFile, -100, height)
+    ).toBeRejectedWithError(/Width and height must be positive integers./);
+  });
+
+  it('should throw an error when height is negative', async () => {
+    await expectAsync(resizeImage(testFile, width, -100)).toBeRejectedWithError(
+      /Error processing image/
+    );
+  });
 });
