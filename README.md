@@ -124,7 +124,8 @@ GET http://localhost:3000/images?filename=fjord.jpg&width=300&height=200
 ```
 GET http://localhost:3000/images?filename=santamonica.jpg&width=500&height=500
 ```
-![Uploading image.png…]()
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/c04a0b58-3eb6-4b95-9f36-7b765bd5591d" />
+
 
 ```
 
